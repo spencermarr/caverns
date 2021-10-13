@@ -1,6 +1,7 @@
-mod map;
 mod systems;
+mod components;
 mod factories;
+mod resources;
 mod colors;
 
 mod prelude {
@@ -11,8 +12,9 @@ mod prelude {
     pub const SCREEN_WIDTH: i32 = 80;
     pub const SCREEN_HEIGHT: i32 = 50;
     pub use crate::systems::*;
+    pub use crate::components::*;
     pub use crate::factories::*;
-    pub use crate::map::*;
+    pub use crate::resources::*;
     pub use crate::colors::*;
 }
 
@@ -31,6 +33,7 @@ impl State {
         let mut rng = RandomNumberGenerator::new();
 
         resources.insert(MapFactory::build_map());
+        resources.insert(Mouse::new(ColorPair::new(WHITE, BLACK), to_cp437('░')));
 
         Self {
             ecs,

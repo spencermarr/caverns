@@ -8,17 +8,12 @@ pub struct Enemy;
 
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct Renderable {
-    pub color : ColorPair,
-    pub glyph : FontCharType
+    pub color: ColorPair,
+    pub glyph: FontCharType,
 }
 
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct Selectable {
-    pub is_selected: &mut bool,
-}
-
-impl Selectable {
-    pub fn color(&self) -> &str {
-        get_hex_color(COLOR_SELECTED)
-    }
+    pub is_selected: bool,
+    pub is_hovered: bool,
 }
