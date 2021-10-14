@@ -32,6 +32,10 @@ impl State {
         let mut resources = Resources::default();
         let mut rng = RandomNumberGenerator::new();
 
+        UnitFactory::spawn_dwarf(&mut ecs, Point::new(5, 3));
+        UnitFactory::spawn_dwarf(&mut ecs, Point::new(7, 3));
+        UnitFactory::spawn_dwarf(&mut ecs, Point::new(8, 3));
+
         resources.insert(MapFactory::build_map());
         resources.insert(Mouse::new(ColorPair::new(WHITE, BLACK), to_cp437('░')));
 

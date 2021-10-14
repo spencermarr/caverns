@@ -20,7 +20,8 @@ pub struct Selection {
 }
 
 impl Selection {
-    pub fn get_drawable_rect(&self) -> Rect {
+    /// returns an absolute rect corrected for negative drag direction
+    pub fn get_abs_rect(&self) -> Rect {
         let x = if self.rect.x1 <= self.rect.x2 {
             self.rect.x1
         } else {
@@ -51,6 +52,7 @@ pub struct Mouse {
     pub cursor_glyph: FontCharType,
 
     pub selection: Selection,
+    pub is_hovering_selectable: bool,
 }
 
 impl Mouse {
@@ -75,6 +77,7 @@ impl Mouse {
                 state: SelectionState::None,
                 rect: Rect::zero(),
             },
+            is_hovering_selectable: false,
         }
     }
 
